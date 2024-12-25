@@ -1,0 +1,8 @@
+namespace PrintFrameElement
+{
+    [default_interface]
+    runtimeclass PageOne : Microsoft.UI.Xaml.Controls.Page
+    {
+        PageOne();
+    }
+}
