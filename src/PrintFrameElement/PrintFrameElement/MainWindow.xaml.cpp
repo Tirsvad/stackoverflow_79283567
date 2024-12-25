@@ -37,7 +37,7 @@
 #include <initguid.h>
 
 // Manually define CLSID_PrintManager
-DEFINE_GUID(CLSID_PrintManager, 0x92788047, 0x3b5e, 0x41c7, 0x86, 0x2e, 0x4c, 0xd3, 0x0d, 0x45, 0xa3, 0x10);
+//DEFINE_GUID(CLSID_PrintManager, 0x92788047, 0x3b5e, 0x41c7, 0x86, 0x2e, 0x4c, 0xd3, 0x0d, 0x45, 0xa3, 0x10);
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -92,8 +92,9 @@ namespace winrt::PrintFrameElement::implementation
 
         // Create an instance of IPrintManagerInterop
         com_ptr<IPrintManagerInterop> printManagerInterop;
-        auto CLSID_PrintManagerInterop = __uuidof(printManagerInterop);
-        hr = CoCreateInstance(CLSID_PrintManagerInterop, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(printManagerInterop.put()));
+        auto CLSID_PrintManagerInterop = __uuidof(printManagerInterop); // GUID of IPrintManagerInterop
+        //hr = CoCreateInstance(CLSID_PrintManager, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(printManagerInterop.put()));
+        hr = CoCreateInstance(CLSID_PrintManagerInterop, nullptr, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(printManagerInterop.put())); 
         if (FAILED(hr))
         {
             OutputDebugString(L"Failed to create instance of IPrintManagerInterop.\n");
